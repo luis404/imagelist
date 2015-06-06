@@ -3,7 +3,7 @@ package com.lx.imagelist;
 import android.util.Log;
 
 /**
- * Created by douhua on 15/6/6.
+ * Created by xzc on 15/6/6.
  */
 public class LxLog {
     public static final String TAG = "ImageList";
