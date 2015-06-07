@@ -7,13 +7,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.facebook.drawee.view.SimpleDraweeView;
+
+import java.util.ArrayList;
 import java.util.zip.Inflater;
 
 /**
  * Created by xzc on 15/6/6.
  */
 public class CustomAdapter extends Adapter<CustomAdapter.ViewHolder> {
-    private DataItem[] mDataSet;
+    private ArrayList<DataItem> mDataSet;
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
         public View mView;
@@ -23,12 +26,12 @@ public class CustomAdapter extends Adapter<CustomAdapter.ViewHolder> {
         }
 
         public void initViewFromData(DataItem item){
-            ImageView imageView = (ImageView)mView.findViewById(R.id.product_image);
-            imageView.setImageResource(R.drawable.images);
+            SimpleDraweeView imageView = (SimpleDraweeView)mView.findViewById(R.id.product_image);
+            imageView.setImageURI(item.getUri());
         }
     }
 
-    public CustomAdapter(DataItem[] data){
+    public CustomAdapter(ArrayList<DataItem> data){
         mDataSet = data;
     }
 
@@ -43,11 +46,11 @@ public class CustomAdapter extends Adapter<CustomAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int i) {
-        viewHolder.initViewFromData(mDataSet[i]);
+        viewHolder.initViewFromData(mDataSet.get(i));
     }
 
     @Override
     public int getItemCount() {
-        return mDataSet.length;
+        return mDataSet.size();
     }
 }
